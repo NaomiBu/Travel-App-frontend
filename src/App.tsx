@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import CreatePage from "./pages/CreatePage/CreatePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import NavBar from "./components/NavBar/NavBar";
+import "./App.css";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LayoutWrapper />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/create",
+        element: <CreatePage />,
+      },
+     
+      {
+        path: "/search",
+        element: <SearchPage />,
+      },
+    ],
+  },
+]);
+
+function LayoutWrapper() {
+  return (
+    <div className="App">
+      <NavBar />
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
+}
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={router} />
     </div>
   );
 }
