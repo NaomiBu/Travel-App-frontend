@@ -13,7 +13,7 @@ export default function NavBar() {
     className="input-group"
 >
 <input
-    aria-label="Search recipes"
+    aria-label="Search locations"
     placeholder="Search"
     type="search"
     name="q"
@@ -26,7 +26,7 @@ export default function NavBar() {
     />
 </form>
     <Link to="/create" className="btn btn-primary">
-      Create Destination
+      Create Location
     </Link>
   </nav>
   );
